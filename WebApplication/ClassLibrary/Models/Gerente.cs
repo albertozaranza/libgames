@@ -4,11 +4,10 @@ using System.Text;
 
 namespace ClassLibrary.Models
 {
-    public class Gerente : Funcionario
+    public class Gerente
     {
+        public int Id { get; set; }
         public int Registro { get; set; }
-        public int DesenvolvedorId { get; set; }
-
-        public virtual Desenvolvedor Desenvolvedor { get; set; }
+        public int FuncionarioId { get; set; }
     }
 }

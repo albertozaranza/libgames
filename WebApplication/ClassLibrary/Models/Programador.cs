@@ -4,10 +4,9 @@ using System.Text;
 
 namespace ClassLibrary.Models
 {
-    public class Programador : Funcionario
+    public class Programador
     {
-        public int DesenvolvedorId { get; set; }
-
-        public virtual Desenvolvedor Desenvolvedor { get; set; }
+        public int Id { get; set; }
+        public int FuncionarioId { get; set; }
     }
 }

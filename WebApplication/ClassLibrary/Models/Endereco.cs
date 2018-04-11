@@ -13,7 +13,6 @@ namespace ClassLibrary.Models
         public string Cep { get; set; }
         public string Municipio { get; set; }
         public string Uf { get; set; }
-        public int DesenvolvedorId { get; set; }
 
         public virtual Desenvolvedor Desenvolvedor { get; set; }
     }

@@ -6,6 +6,7 @@ namespace ClassLibrary.Models
 {
     public class TagJogo
     {
+        public int Id { get; set; }
         public int TagId { get; set; }
         public int JogoId { get; set; }
 

@@ -8,17 +8,14 @@ namespace ClassLibrary.Models
     {
         public Desenvolvedor()
         {
-            Programadores = new List<Programador>();
-            Gerentes = new List<Gerente>();
-            Enderecos = new List<Endereco> ();
+            Funcionarios = new List<Funcionario>();
         }
 
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Cnpj { get; set; }
-
-        public virtual ICollection<Programador> Programadores { get; set; }
-        public virtual ICollection<Gerente> Gerentes { get; set; }
-        public virtual ICollection<Endereco> Enderecos { get; set; }
+        public int EnderecoId { get; set; }
+        
+        public virtual ICollection<Funcionario> Funcionarios { get; set; }        
     }
 }
