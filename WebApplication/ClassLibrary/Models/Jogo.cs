@@ -18,8 +18,10 @@ namespace ClassLibrary.Models
         public double Preco { get; set; }
         public double Classificacao { get; set; }
         public int UsuarioId { get; set; }
+        public int DesenvolvedorId { get; set; }
 
         public virtual Usuario Usuario { get; set; }
+        public virtual Desenvolvedor Desenvolvedor { get; set; }
         public virtual ICollection<TagJogo> TagsJogo { get; set; }
     }
 }

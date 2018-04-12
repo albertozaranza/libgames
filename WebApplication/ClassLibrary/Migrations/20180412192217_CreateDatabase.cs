@@ -133,6 +133,7 @@ namespace ClassLibrary.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Classificacao = table.Column<double>(nullable: false),
                     Descricao = table.Column<string>(nullable: true),
+                    DesenvolvedorId = table.Column<int>(nullable: false),
                     Lancamento = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(nullable: true),
                     Preco = table.Column<double>(nullable: false),
@@ -141,6 +142,12 @@ namespace ClassLibrary.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Jogos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Jogos_Desenvolvedores_DesenvolvedorId",
+                        column: x => x.DesenvolvedorId,
+                        principalTable: "Desenvolvedores",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Jogos_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
@@ -235,6 +242,11 @@ namespace ClassLibrary.Migrations
                 table: "Gerentes",
                 column: "FuncionarioId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Jogos_DesenvolvedorId",
+                table: "Jogos",
+                column: "DesenvolvedorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Jogos_UsuarioId",

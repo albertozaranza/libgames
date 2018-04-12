@@ -110,6 +110,8 @@ namespace ClassLibrary.Migrations
 
                     b.Property<string>("Descricao");
 
+                    b.Property<int>("DesenvolvedorId");
+
                     b.Property<DateTime>("Lancamento");
 
                     b.Property<string>("Nome");
@@ -119,6 +121,8 @@ namespace ClassLibrary.Migrations
                     b.Property<int>("UsuarioId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DesenvolvedorId");
 
                     b.HasIndex("UsuarioId");
 
@@ -233,6 +237,11 @@ namespace ClassLibrary.Migrations
 
             modelBuilder.Entity("ClassLibrary.Models.Jogo", b =>
                 {
+                    b.HasOne("ClassLibrary.Models.Desenvolvedor", "Desenvolvedor")
+                        .WithMany("Jogos")
+                        .HasForeignKey("DesenvolvedorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("ClassLibrary.Models.Usuario", "Usuario")
                         .WithMany("Jogos")
                         .HasForeignKey("UsuarioId")
