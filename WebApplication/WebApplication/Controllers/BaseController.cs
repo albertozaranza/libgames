@@ -9,11 +9,11 @@ using WebApplication.Repositories;
 namespace WebApplication.Controllers
 {
     [Route("api/[controller]/")]
-    public abstract class ControllerBase<T> : Controller where T : class
+    public abstract class BaseController<T> : Controller where T : class
     {
         public RepositoryBase<T> _repository;
 
-        public ControllerBase(StoreContext context)
+        public BaseController(StoreContext context)
         {
             _repository = new RepositoryBase<T>(context);
         }
