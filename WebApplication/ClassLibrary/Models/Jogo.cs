@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -17,10 +18,8 @@ namespace ClassLibrary.Models
         public DateTime Lancamento { get; set; }
         public double Preco { get; set; }
         public double Classificacao { get; set; }
-        public int UsuarioId { get; set; }
         public int DesenvolvedorId { get; set; }
 
-        public virtual Usuario Usuario { get; set; }
         public virtual Desenvolvedor Desenvolvedor { get; set; }
         public virtual ICollection<TagJogo> TagsJogo { get; set; }
     }

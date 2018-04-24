@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,7 +12,7 @@ namespace ClassLibrary.Models
         {
             Jogos = new List<Jogo>();
         }
-
+        
         public int Id { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
@@ -19,6 +20,7 @@ namespace ClassLibrary.Models
         public double Saldo { get; set; }
         public int PessoaId { get; set; }
 
+        public virtual Pessoa Pessoas { get; set; }
         public virtual ICollection<Jogo> Jogos { get; set; }
     }
 }

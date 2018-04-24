@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,6 +16,7 @@ namespace ClassLibrary.Models
         public int Id { get; set; }
         public string Nome { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<TagJogo> TagsJogo { get; set; }
     }
 }

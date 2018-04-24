@@ -11,7 +11,7 @@ using System;
 namespace ClassLibrary.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20180412192217_CreateDatabase")]
+    [Migration("20180423234859_CreateDatabase")]
     partial class CreateDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -119,7 +119,7 @@ namespace ClassLibrary.Migrations
 
                     b.Property<double>("Preco");
 
-                    b.Property<int>("UsuarioId");
+                    b.Property<int?>("UsuarioId");
 
                     b.HasKey("Id");
 
@@ -243,10 +243,9 @@ namespace ClassLibrary.Migrations
                         .HasForeignKey("DesenvolvedorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ClassLibrary.Models.Usuario", "Usuario")
+                    b.HasOne("ClassLibrary.Models.Usuario")
                         .WithMany("Jogos")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UsuarioId");
                 });
 
             modelBuilder.Entity("ClassLibrary.Models.Programador", b =>
@@ -272,7 +271,7 @@ namespace ClassLibrary.Migrations
 
             modelBuilder.Entity("ClassLibrary.Models.Usuario", b =>
                 {
-                    b.HasOne("ClassLibrary.Models.Pessoa")
+                    b.HasOne("ClassLibrary.Models.Pessoa", "Pessoas")
                         .WithOne("Usuario")
                         .HasForeignKey("ClassLibrary.Models.Usuario", "PessoaId")
                         .OnDelete(DeleteBehavior.Cascade);

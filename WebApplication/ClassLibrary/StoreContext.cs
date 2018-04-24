@@ -10,6 +10,11 @@ namespace ClassLibrary
 {
     public class StoreContext : DbContext
     {
+
+        public StoreContext(DbContextOptions<StoreContext> options) : base(options)
+        {
+        }
+
         public DbSet<Desenvolvedor> Desenvolvedores  { get; set; }
         public DbSet<Endereco> Enderecos  { get; set; }
         public DbSet<Funcionario> Funcionarios  { get; set; }
@@ -23,7 +28,7 @@ namespace ClassLibrary
 
         private static IConfigurationRoot Configuration;
 
-        public StoreContext()
+        /*public StoreContext()
         {
             var builder = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
@@ -36,6 +41,24 @@ namespace ClassLibrary
         {
             var connection = (Configuration.GetConnectionString("StoreDB"));
             optionsBuilder.UseSqlServer(connection);
+        }
+        */
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            // get the configuration from the app settings
+
+            var config = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json")
+            .Build();
+
+            // define the database to use
+            optionsBuilder.UseSqlServer(config.GetConnectionString("StoreDB"));
+        }
+
+        public StoreContext()
+        {
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

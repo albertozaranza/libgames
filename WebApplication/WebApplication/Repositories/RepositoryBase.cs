@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication.Repositories
 {
-    public class RepositoryBase<T> where T : class
+    public class RepositoryBase<T>: IRepositoryBase<T> where T : class
     {
         private readonly StoreContext _context;
 

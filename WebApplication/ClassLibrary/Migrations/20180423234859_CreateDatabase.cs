@@ -137,7 +137,7 @@ namespace ClassLibrary.Migrations
                     Lancamento = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(nullable: true),
                     Preco = table.Column<double>(nullable: false),
-                    UsuarioId = table.Column<int>(nullable: false)
+                    UsuarioId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -153,7 +153,7 @@ namespace ClassLibrary.Migrations
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
